@@ -14,7 +14,7 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
-            background-color: #f0f0f0;
+            background-color: #fff;
         }
         #counter-container {
             background-color: #fff;
@@ -37,7 +37,13 @@
             const response = await fetch(url);
             const data = await response.json();
             const startDateStr = data.startDate;
-            return new Date(startDateStr);
+
+            // Parse the DD-MM-YYYY format
+            const day = parseInt(startDateStr.substring(0, 2), 10);
+            const month = parseInt(startDateStr.substring(3, 5), 10) - 1; // Months are zero-based in JavaScript
+            const year = parseInt(startDateStr.substring(6, 10), 10);
+
+            return new Date(year, month, day);
         }
 
         function updateCounter(startDate) {
