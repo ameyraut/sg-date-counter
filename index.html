@@ -19,14 +19,13 @@
         #counter-container {
             background-color: #fff;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; 
             text-align: center;
             width: 100%;
             max-width: 600px;
         }
         #counter {
-            font-size: 2em;
+            font-size: 5em;
             margin-top: 20px;
         }
     </style>
@@ -50,7 +49,7 @@
             const currentDate = new Date();
             const timeDifference = currentDate - startDate;
             const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            document.getElementById('counter').textContent = daysDifference + " days";
+            document.getElementById('counter').textContent = daysDifference;
         }
 
         async function initializeCounter() {
