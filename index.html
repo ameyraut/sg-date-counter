@@ -65,7 +65,13 @@
         async function initializeCounter() {
             const startDate = await fetchStartDate();
             updateCounter(startDate);
-            setInterval(() => updateCounter(startDate), 3600000); // Update every hour (3600000 milliseconds)
+            setInterval(() => updateCounter(startDate), 3600000); // Update every hour (3600000 milliseconds);
+
+             // Add double-click event listener to reload the start date and update counter
+            document.getElementById('counter').addEventListener('dblclick', async () => {
+                startDate = await fetchStartDate();
+                updateCounter(startDate);
+            });
         }
 
         window.onload = initializeCounter;
