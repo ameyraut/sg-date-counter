@@ -63,7 +63,7 @@
         }
 
         async function initializeCounter() {
-            const startDate = await fetchStartDate();
+             let startDate = await fetchStartDate();
             updateCounter(startDate);
             setInterval(() => updateCounter(startDate), 3600000); // Update every hour (3600000 milliseconds);
 
