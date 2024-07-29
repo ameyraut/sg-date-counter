@@ -45,16 +45,27 @@
             return new Date(year, month, day);
         }
 
-        function updateCounter(startDate) {
+       function updateCounter(startDate) {
+            if (!startDate) {
+                document.getElementById('counter').textContent = "Error loading date";
+                return;
+            }
+            
             const currentDate = new Date();
             const timeDifference = currentDate - startDate;
             const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            document.getElementById('counter').textContent = daysDifference;
+
+            console.log("Current Date:", currentDate); // Debugging
+            console.log("Start Date:", startDate); // Debugging
+            console.log("Days Difference:", daysDifference); // Debugging
+
+            document.getElementById('counter').textContent = daysDifference + " days";
         }
 
         async function initializeCounter() {
             const startDate = await fetchStartDate();
             updateCounter(startDate);
+            setInterval(() => updateCounter(startDate), 3600000); // Update every hour (3600000 milliseconds)
         }
 
         window.onload = initializeCounter;
